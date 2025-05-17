@@ -17,10 +17,10 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white font-sans">
+      <link rel="preload" as="image" href="/syntra-logo.png" />
       <header className="p-6 flex justify-between items-center border-b border-white/10">
-        <a href="#" className="flex items-center space-x-3">
-          <img src="/syntra-logo.png" alt="Syntra logo" className="h-8 w-8" />
-          <span className="text-2xl font-bold">Syntra</span>
+        <a href="#" className="flex items-center transition-transform duration-300 hover:scale-105">
+          <img src="/syntra-logo.png" alt="Syntra logo" className="h-12 w-auto drop-shadow-xl" />
         </a>
         <nav className="space-x-6">
           <a href="#features" className="hover:underline">Features</a>
