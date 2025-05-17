@@ -1,6 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function App() {
+  const [showForm, setShowForm] = useState(false);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const name = formData.get('name');
+    const email = formData.get('email');
+    const twitter = formData.get('twitter');
+    const message = formData.get('message');
+    console.log({ name, email, twitter, message });
+    alert('Submitted!');
+    setShowForm(false);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white font-sans">
       <header className="p-6 flex justify-between items-center border-b border-white/10">
@@ -9,7 +23,7 @@ export default function App() {
           <a href="#features" className="hover:underline">Features</a>
           <a href="#how-it-works" className="hover:underline">How It Works</a>
           <a href="#roadmap" className="hover:underline">Roadmap</a>
-          <a href="#join" className="hover:underline">Join</a>
+          <button onClick={() => setShowForm(true)} className="hover:underline">Join</button>
         </nav>
       </header>
 
@@ -18,12 +32,12 @@ export default function App() {
         <p className="text-xl text-gray-300 mb-8">
           Syntra is a prompt-based execution engine built for traders who move fast. Skip the dashboards — type what you want to do and let Syntra route and execute the trade on Solana in real time.
         </p>
-        <a
-          href="#join"
+        <button
+          onClick={() => setShowForm(true)}
           className="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-medium"
         >
           Join Beta
-        </a>
+        </button>
       </section>
 
       <section id="features" className="px-6 py-20 bg-black/30">
@@ -71,17 +85,35 @@ export default function App() {
       <section id="join" className="px-6 py-20 text-center">
         <h3 className="text-3xl font-bold mb-4">Join the Beta</h3>
         <p className="text-gray-300 mb-8">Get early access to Syntra, test new features, and shape the future of intent-based trading on Solana.</p>
-        <a
-          href="#"
+        <button
+          onClick={() => setShowForm(true)}
           className="inline-block bg-white text-black px-6 py-3 rounded-xl font-medium hover:bg-gray-200"
         >
           Request Access
-        </a>
+        </button>
       </section>
 
       <footer className="text-center p-6 border-t border-white/10 text-gray-400">
         &copy; 2025 Syntra Labs. Built on Solana.
       </footer>
+
+      {showForm && (
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-white text-black p-8 rounded-xl w-full max-w-md">
+            <h2 className="text-2xl font-bold mb-4">Join Syntra Beta</h2>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <input name="name" placeholder="Name" className="w-full px-4 py-2 border rounded" required />
+              <input name="email" placeholder="Email" type="email" className="w-full px-4 py-2 border rounded" required />
+              <input name="twitter" placeholder="Twitter Handle (optional)" className="w-full px-4 py-2 border rounded" />
+              <textarea name="message" placeholder="Why do you want access?" className="w-full px-4 py-2 border rounded" rows="3" />
+              <div className="flex justify-end space-x-4">
+                <button type="button" onClick={() => setShowForm(false)} className="text-gray-600">Cancel</button>
+                <button type="submit" className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded">Submit</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
