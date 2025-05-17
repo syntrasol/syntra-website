@@ -22,21 +22,10 @@ export default function App() {
         <a href="#" className="flex items-center transition-transform duration-300 hover:scale-105">
           <img src="/syntra-icon-light.png" alt="Syntra logo" className="h-30 md:h-36 lg:h-42 w-auto drop-shadow-md" />
         </a>
-        <nav className="space-x-6 text-sm md:text-base flex items-center">
+        <nav className="space-x-6 text-sm md:text-base">
           <a href="#features" className="hover:underline">Features</a>
           <a href="#how-it-works" className="hover:underline">How It Works</a>
           <a href="#roadmap" className="hover:underline">Roadmap</a>
-          <a
-            href="https://docs.joinsyntra.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:underline inline-flex items-center space-x-1"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3 4a1 1 0 011-1h6.764a1 1 0 01.832.445l1.264 1.851a1 1 0 00.832.444H20a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm2 1v12h14V7h-5.308a3 3 0 01-2.496-1.332L11.236 5H5z" />
-            </svg>
-            <span>Docs</span>
-          </a>
           <button onClick={() => setShowForm(true)} className="hover:underline">Join</button>
         </nav>
       </header>
