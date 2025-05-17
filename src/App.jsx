@@ -20,7 +20,7 @@ export default function App() {
       <link rel="preload" as="image" href="/syntra-icon-light.png" />
       <header className="px-6 py-4 flex justify-between items-center border-b border-white/10">
         <a href="#" className="flex items-center transition-transform duration-300 hover:scale-105">
-          <img src="/syntra-icon-light.png" alt="Syntra logo" className="h-20 md:h-24 lg:h-28 w-auto drop-shadow-md" />
+          <img src="/syntra-icon-light.png" alt="Syntra logo" className="h-30 md:h-36 lg:h-42 w-auto drop-shadow-md" />
         </a>
         <nav className="space-x-6 text-sm md:text-base">
           <a href="#features" className="hover:underline">Features</a>
