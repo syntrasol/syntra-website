@@ -27,7 +27,7 @@ export default function App() {
           <a href="#how-it-works" className="hover:underline">How It Works</a>
           <a href="#roadmap" className="hover:underline">Roadmap</a>
           <a
-            href="https://docs.joinsyntra.com"
+            href="https://syntax-6.gitbook.io/syntra"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:underline inline-flex items-center space-x-1"
