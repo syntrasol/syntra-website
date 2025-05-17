@@ -18,7 +18,10 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white font-sans">
       <header className="p-6 flex justify-between items-center border-b border-white/10">
-        <h1 className="text-2xl font-bold">Syntra</h1>
+        <a href="#" className="flex items-center space-x-3">
+          <img src="/syntra-logo.png" alt="Syntra logo" className="h-8 w-8" />
+          <span className="text-2xl font-bold">Syntra</span>
+        </a>
         <nav className="space-x-6">
           <a href="#features" className="hover:underline">Features</a>
           <a href="#how-it-works" className="hover:underline">How It Works</a>
@@ -94,7 +97,13 @@ export default function App() {
       </section>
 
       <footer className="text-center p-6 border-t border-white/10 text-gray-400">
-        &copy; 2025 Syntra Labs. Built on Solana.
+        &copy; 2025 Syntra Labs. Built on Solana. &nbsp;
+        <a href="https://www.x.com/joinsyntra" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 ml-2 text-white hover:underline">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
+            <path d="M18.255 3H21L14.745 10.307 22.302 21h-6.903l-4.473-6.221L5.89 21H3l6.718-7.664L1.5 3h7.04l4.14 5.758L18.255 3Zm-1.16 17h1.47L6.92 4.24H5.375L17.095 20Z"/>
+          </svg>
+          <span>@joinsyntra</span>
+        </a>
       </footer>
 
       {showForm && (
