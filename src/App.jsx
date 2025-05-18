@@ -1,8 +1,21 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
+
+const images = [
+  '/demo-step1.png',
+  '/demo-step2.png',
+  '/demo-step3.png'
+];
 
 export default function App() {
   const [showForm, setShowForm] = useState(false);
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImage((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -17,11 +30,12 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white font-sans">
+    <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white font-sans text-center">
       <link rel="preload" as="image" href="/syntra-icon-light.png" />
+
       <header className="px-6 py-4 flex justify-between items-center border-b border-white/10">
         <a href="#" className="flex items-center transition-transform duration-300 hover:scale-105">
-          <img src="/syntra-icon-light.png" alt="Syntra logo" className="h-30 md:h-36 lg:h-42 w-auto drop-shadow-md" />
+          <img src="/syntra-icon-light.png" alt="Syntra logo" className="h-20 w-auto drop-shadow-md" />
         </a>
         <nav className="space-x-6 text-sm md:text-base flex items-center">
           <a href="#features" className="hover:underline">Features</a>
@@ -31,48 +45,27 @@ export default function App() {
             href="https://syntax-6.gitbook.io/syntra"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:underline inline-flex items-center space-x-1"
+            className="hover:underline"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3 4a1 1 0 011-1h6.764a1 1 0 01.832.445l1.264 1.851a1 1 0 00.832.444H20a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm2 1v12h14V7h-5.308a3 3 0 01-2.496-1.332L11.236 5H5z" />
-            </svg>
-            <span>Docs</span>
+            Docs
           </a>
           <button onClick={() => setShowForm(true)} className="hover:underline">Join</button>
         </nav>
       </header>
 
-      <section className="px-6 py-20 max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-12">
-        <div className="lg:w-1/2 text-center lg:text-left">
-          <h2 className="text-5xl font-extrabold mb-6 leading-tight">
-            AI-Native Execution. Solana Speed.
-          </h2>
-          <p className="text-xl text-gray-300 mb-8">
-            Syntra is a prompt-based execution engine built for traders who move fast.
-            Skip the dashboards — type what you want to do and let Syntra route and execute
-            the trade on Solana in real time.
-          </p>
-          <button
-            onClick={() => setShowForm(true)}
-            className="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-medium"
-          >
-            Join Beta
-          </button>
-        </div>
-
-        <div className="lg:w-1/2 space-y-6">
-          {[1, 2, 3].map((step, index) => (
-            <motion.img
-              key={step}
-              src={`/demo-step${step}.png`}
-              alt={`Demo step ${step}`}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.3, duration: 0.7, ease: 'easeOut' }}
-              className="rounded-xl shadow-xl w-full border border-white/10"
-            />
-          ))}
+      <section className="px-6 py-20 max-w-4xl mx-auto">
+        <h2 className="text-5xl font-extrabold mb-6">AI-Native Execution. Solana Speed.</h2>
+        <p className="text-xl text-gray-300 mb-8">
+          Syntra is a prompt-based execution engine built for traders who move fast. Skip the dashboards — type what you want to do and let Syntra route and execute the trade on Solana in real time.
+        </p>
+        <button
+          onClick={() => setShowForm(true)}
+          className="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-medium"
+        >
+          Join Beta
+        </button>
+        <div className="mt-12">
+          <img src={images[currentImage]} alt="Syntra Demo" className="mx-auto w-full max-w-xl rounded-xl shadow-lg transition-opacity duration-700" />
         </div>
       </section>
 
@@ -98,7 +91,7 @@ export default function App() {
       </section>
 
       <section id="how-it-works" className="px-6 py-20 max-w-5xl mx-auto">
-        <h3 className="text-3xl font-bold mb-6 text-center">How Syntra Works</h3>
+        <h3 className="text-3xl font-bold mb-6">How Syntra Works</h3>
         <ol className="space-y-4 text-gray-300 list-decimal list-inside">
           <li>You input a prompt like "buy $JUP if RSI drops below 25 in the next 10 minutes."</li>
           <li>Syntra parses the prompt with its GPT-powered strategy engine.</li>
@@ -109,8 +102,8 @@ export default function App() {
 
       <section id="roadmap" className="px-6 py-20 bg-black/20">
         <div className="max-w-4xl mx-auto">
-          <h3 className="text-3xl font-bold mb-6 text-center">Roadmap</h3>
-          <ul className="list-disc pl-6 space-y-3">
+          <h3 className="text-3xl font-bold mb-6">Roadmap</h3>
+          <ul className="list-disc pl-6 space-y-3 text-left">
             <li><strong>Q2 2025:</strong> Beta launch with Orca + Jito integration</li>
             <li><strong>Q3 2025:</strong> Vaults and API release, prompt condition builder</li>
             <li><strong>Q4 2025:</strong> Mobile view, Telegram bot interface, and strategy marketplace</li>
@@ -118,7 +111,7 @@ export default function App() {
         </div>
       </section>
 
-      <section id="join" className="px-6 py-20 text-center">
+      <section id="join" className="px-6 py-20">
         <h3 className="text-3xl font-bold mb-4">Join the Beta</h3>
         <p className="text-gray-300 mb-8">Get early access to Syntra, test new features, and shape the future of intent-based trading on Solana.</p>
         <button
@@ -131,9 +124,14 @@ export default function App() {
 
       <footer className="text-center p-6 border-t border-white/10 text-gray-400">
         &copy; 2025 Syntra Labs. Built on Solana. &nbsp;
-        <a href="https://www.x.com/joinsyntra" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 ml-2 text-white hover:underline">
+        <a
+          href="https://www.x.com/joinsyntra"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center space-x-2 ml-2 text-white hover:underline"
+        >
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path d="M18.255 3H21L14.745 10.307 22.302 21h-6.903l-4.473-6.221L5.89 21H3l6.718-7.664L1.5 3h7.04l4.14 5.758L18.255 3Zm-1.16 17h1.47L6.92 4.24H5.375L17.095 20Z" />
+            <path d="M18.255 3H21L14.745 10.307 22.302 21h-6.903l-4.473-6.221L5.89 21H3l6.718-7.664L1.5 3h7.04l4.14 5.758L18.255 3Zm-1.16 17h1.47L6.92 4.24H5.375L17.095 20Z"/>
           </svg>
           <span>@joinsyntra</span>
         </a>
