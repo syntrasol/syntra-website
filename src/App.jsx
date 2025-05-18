@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import demo1 from './assets/demo-step1.png';
-import demo2 from './assets/demo-step2.png';
-import demo3 from './assets/demo-step3.png';
 
 export default function App() {
   const [currentImage, setCurrentImage] = useState(0);
-  const images = [demo1, demo2, demo3];
+  const images = [
+    '/demo-step1.png',
+    '/demo-step2.png',
+    '/demo-step3.png'
+  ];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -31,6 +32,7 @@ export default function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white font-sans">
       <link rel="preload" as="image" href="/syntra-icon-light.png" />
+      
       <header className="px-6 py-4 flex justify-between items-center border-b border-white/10">
         <a href="#" className="flex items-center transition-transform duration-300 hover:scale-105">
           <img src="/syntra-icon-light.png" alt="Syntra logo" className="h-20 w-auto drop-shadow-md" />
@@ -44,7 +46,9 @@ export default function App() {
             target="_blank"
             rel="noopener noreferrer"
             className="hover:underline"
-          >Docs</a>
+          >
+            Docs
+          </a>
         </nav>
       </header>
 
