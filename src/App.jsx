@@ -43,13 +43,8 @@ export default function App() {
             href="https://syntax-6.gitbook.io/syntra"
             target="_blank"
             rel="noopener noreferrer"
-            className="hover:underline inline-flex items-center space-x-1"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M3 4a1 1 0 011-1h6.764a1 1 0 01.832.445l1.264 1.851a1 1 0 00.832.444H20a1 1 0 011 1v12a1 1 0 01-1 1H4a1 1 0 01-1-1V4zm2 1v12h14V7h-5.308a3 3 0 01-2.496-1.332L11.236 5H5z" />
-            </svg>
-            <span>Docs</span>
-          </a>
+            className="hover:underline"
+          >Docs</a>
         </nav>
       </header>
 
@@ -58,17 +53,13 @@ export default function App() {
         <p className="text-xl text-gray-300 mb-8">
           Syntra is a prompt-based execution engine built for traders who move fast. Skip the dashboards — type what you want to do and let Syntra route and execute the trade on Solana in real time.
         </p>
-
-        <div className="w-full max-w-3xl mx-auto mb-10 overflow-hidden rounded-xl">
-          <div className="transition-all duration-1000 ease-in-out">
-            <img
-              src={images[currentImage]}
-              alt={`demo-${currentImage}`}
-              className="rounded-xl w-full object-contain shadow-xl"
-            />
-          </div>
+        <div className="w-full max-w-3xl mx-auto mb-10 overflow-hidden rounded-xl transition-all duration-1000 ease-in-out">
+          <img
+            src={images[currentImage]}
+            alt={`demo-${currentImage}`}
+            className="rounded-xl w-full object-contain shadow-xl"
+          />
         </div>
-
         <button
           onClick={() => setShowForm(true)}
           className="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-medium"
@@ -101,7 +92,7 @@ export default function App() {
       <section id="how-it-works" className="px-6 py-20 max-w-5xl mx-auto text-center">
         <h3 className="text-3xl font-bold mb-6">How Syntra Works</h3>
         <ol className="space-y-4 text-gray-300 list-decimal list-inside text-left">
-          <li>You input a prompt like \"buy $JUP if RSI drops below 25 in the next 10 minutes.\"</li>
+          <li>You input a prompt like "buy $JUP if RSI drops below 25 in the next 10 minutes."</li>
           <li>Syntra parses the prompt with its GPT-powered strategy engine.</li>
           <li>It checks liquidity, safety, and optimal routing across Solana DEXs.</li>
           <li>Execution logic is deployed to a user-specific vault, and the trade fires if conditions are met.</li>
