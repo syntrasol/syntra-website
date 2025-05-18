@@ -1,21 +1,28 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 export default function App() {
-  const [currentImage, setCurrentImage] = useState(0);
-  const images = [
-    '/demo-step1.png',
-    '/demo-step2.png',
-    '/demo-step3.png'
+  const steps = [
+    {
+      title: 'Step 1: Prompt Input',
+      description: 'buy $JUP if RSI drops below 25 in the next 10 minutes',
+      image: '/demo-step1.png'
+    },
+    {
+      title: 'Step 2: Parsed Strategy',
+      description: 'Syntra detected a valid intent. Preparing to monitor RSI levels for $JUP.',
+      image: '/demo-step2.png'
+    },
+    {
+      title: 'Step 3: Trigger Executed',
+      description: 'RSI dropped below 25. Order submitted through Jupiter Aggregator.',
+      image: '/demo-step3.png'
+    }
   ];
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    }, 4000);
-    return () => clearInterval(interval);
-  }, []);
-
+  const [step, setStep] = useState(0);
   const [showForm, setShowForm] = useState(false);
+
+  const nextStep = () => setStep((prev) => (prev + 1) % steps.length);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -31,7 +38,6 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white font-sans">
-      <link rel="preload" as="image" href="/syntra-icon-light.png" />
       <header className="px-6 py-4 flex justify-between items-center border-b border-white/10">
         <a href="#" className="flex items-center transition-transform duration-300 hover:scale-105">
           <img src="/syntra-icon-light.png" alt="Syntra logo" className="h-20 w-auto drop-shadow-md" />
@@ -49,16 +55,26 @@ export default function App() {
         <p className="text-xl text-gray-300 mb-8">
           Syntra is a prompt-based execution engine built for traders who move fast. Skip the dashboards — type what you want to do and let Syntra route and execute the trade on Solana in real time.
         </p>
-        <div className="w-full max-w-xl mx-auto mb-10 overflow-hidden rounded-xl transition-all duration-1000 ease-in-out">
+
+        <div className="w-full max-w-xl mx-auto mb-6">
           <img
-            src={images[currentImage]}
-            alt={`demo-${currentImage}`}
-            className="rounded-xl w-full object-contain shadow-xl"
+            src={steps[step].image}
+            alt={steps[step].title}
+            className="rounded-xl w-full object-contain shadow-xl transition-opacity duration-1000 ease-in-out opacity-100"
           />
+          <h3 className="text-2xl font-semibold mt-4">{steps[step].title}</h3>
+          <p className="text-gray-300 mt-2">{steps[step].description}</p>
+          <button
+            onClick={nextStep}
+            className="mt-4 bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-xl font-medium"
+          >
+            Next Step
+          </button>
         </div>
+
         <button
           onClick={() => setShowForm(true)}
-          className="inline-block bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-xl font-medium"
+          className="inline-block bg-white text-black px-6 py-3 rounded-xl font-medium hover:bg-gray-200"
         >
           Join Beta
         </button>
