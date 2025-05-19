@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function App() {
+export default function Home() {
   const steps = [
     {
       title: 'Step 1: Prompt Input',
@@ -47,6 +47,7 @@ export default function App() {
           <a href="#how-it-works" className="hover:underline">How It Works</a>
           <a href="#roadmap" className="hover:underline">Roadmap</a>
           <a href="https://syntax-6.gitbook.io/syntra" target="_blank" rel="noopener noreferrer" className="hover:underline">Docs</a>
+          <a href="/demo" className="hover:underline">Demo</a>
         </nav>
       </header>
 
