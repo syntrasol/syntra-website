@@ -1,6 +1,4 @@
-
 import React, { useState } from 'react';
-import { FaRocket } from 'react-icons/fa';
 
 export default function Home() {
   const steps = [
@@ -40,8 +38,16 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white font-sans">
+      {/* Banner */}
+      <div className="bg-white text-black text-sm md:text-base text-center py-2 px-4 shadow-md">
+        We’re live on <strong>Believe</strong> — Contract: 
+        <span className="font-mono text-purple-700 ml-1">
+          HrhkfxBQM59cTxKrJ8ZBVmvTuzXY1it4fZQoDvkunr1F
+        </span>
+      </div>
+
       <header className="px-6 py-4 flex justify-between items-center border-b border-white/10">
-        <a href="/" className="flex items-center transition-transform duration-300 hover:scale-105">
+        <a href="#" className="flex items-center transition-transform duration-300 hover:scale-105">
           <img src="/syntra-icon-light.png" alt="Syntra logo" className="h-20 w-auto drop-shadow-md" />
         </a>
         <nav className="space-x-6 text-sm md:text-base flex items-center">
@@ -49,7 +55,7 @@ export default function Home() {
           <a href="#how-it-works" className="hover:underline">How It Works</a>
           <a href="#roadmap" className="hover:underline">Roadmap</a>
           <a href="https://syntax-6.gitbook.io/syntra" target="_blank" rel="noopener noreferrer" className="hover:underline">Docs</a>
-          <a href="/demo" className="hover:underline">Demo</a>
+          <a href="/demo" className="bg-purple-600 hover:bg-purple-700 text-white px-4 py-1.5 rounded-lg font-medium transition">Try Demo</a>
         </nav>
       </header>
 
@@ -75,21 +81,12 @@ export default function Home() {
           </button>
         </div>
 
-        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-          <a
-            href="/demo"
-            className="flex items-center gap-2 px-6 py-3 rounded-xl border border-purple-500 text-purple-400 hover:bg-purple-700 hover:text-white font-medium transition-all shadow-lg hover:shadow-purple-500/50"
-          >
-            <FaRocket className="w-4 h-4" />
-            Try Demo
-          </a>
-          <button
-            onClick={() => setShowForm(true)}
-            className="inline-block bg-white text-black px-6 py-3 rounded-xl font-medium hover:bg-gray-200"
-          >
-            Join Beta
-          </button>
-        </div>
+        <button
+          onClick={() => setShowForm(true)}
+          className="inline-block bg-white text-black px-6 py-3 rounded-xl font-medium hover:bg-gray-200"
+        >
+          Join Beta
+        </button>
       </section>
 
       <section id="features" className="px-6 py-20 bg-black/30 text-center">
@@ -132,11 +129,22 @@ export default function Home() {
         </ul>
       </section>
 
+      <section id="join" className="px-6 py-20 text-center">
+        <h3 className="text-3xl font-bold mb-4">Join the Beta</h3>
+        <p className="text-gray-300 mb-8">Get early access to Syntra, test new features, and shape the future of intent-based trading on Solana.</p>
+        <button
+          onClick={() => setShowForm(true)}
+          className="inline-block bg-white text-black px-6 py-3 rounded-xl font-medium hover:bg-gray-200"
+        >
+          Request Access
+        </button>
+      </section>
+
       <footer className="text-center p-6 border-t border-white/10 text-gray-400">
         &copy; 2025 Syntra Labs. Built on Solana. &nbsp;
         <a href="https://www.x.com/joinsyntra" target="_blank" rel="noopener noreferrer" className="inline-flex items-center space-x-2 ml-2 text-white hover:underline">
           <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" className="w-5 h-5">
-            <path d="M18.255 3H21L14.745 10.307 22.302 21h-6.903l-4.473-6.221L5.89 21H3l6.718-7.664L1.5 3h7.04l4.14 5.758L18.255 3Zm-1.16 17h1.47L6.92 4.24H5.375L17.095 20Z"/>
+            <path d="M18.255 3H21L14.745 10.307 22.302 21h-6.903l-4.473-6.221L5.89 21H3l6.718-7.664L1.5 3h7.04l4.14 5.758L18.255 3Zm-1.16 17h1.47L6.92 4.24H5.375L17.095 20Z" />
           </svg>
           <span>@joinsyntra</span>
         </a>
