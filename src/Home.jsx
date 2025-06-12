@@ -40,9 +40,9 @@ export default function Home() {
     <div className="min-h-screen bg-gradient-to-br from-black via-gray-900 to-purple-900 text-white font-sans">
       {/* Banner */}
       <div className="bg-white text-black text-sm md:text-base text-center py-2 px-4 shadow-md">
-        We’re live on <strong>Believe</strong> — Contract: 
+        Launching soon on <strong>Believe</strong> — Contract: 
         <span className="font-mono text-purple-700 ml-1">
-          HrhkfxBQM59cTxKrJ8ZBVmvTuzXY1it4fZQoDvkunr1F
+          soon
         </span>
       </div>
 
